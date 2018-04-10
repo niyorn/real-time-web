@@ -1,9 +1,10 @@
 const express = require('express')
     app = express ();
-const router = require('./routes/routes')
+const router = require('./routes/routes');
 const port = 4000;
-var http = require('http').Server(app);
-const io = require('socket.io')(http)
+const http = require('http'),
+    server = http.createServer(app);
+const io = require('socket.io')(server)
 
 
 
@@ -14,10 +15,13 @@ app
 
 app.use('/', router)
 
+//make a connection with sockket
 io.on('connection', function(socket){
     console.log('a user connected');
-    socket.on('message', function(msg){
-        console.log('message: ' + msg);
+
+    //handle message event
+    socket.on('message', function(message){
+        io.emit('message', message)
     });
 
     socket.on('disconnect', function () {
@@ -26,6 +30,6 @@ io.on('connection', function(socket){
 });
 
 
-http.listen(port, function () {
+server.listen(port, function () {
     console.log('open at localhost:' + port)
 })

@@ -19,6 +19,16 @@
                 socket.emit('message', input.value)//send message
                 input.value = ''; //make input empty again
             })
+
+            socket.on('message', function(msg){
+                let message = document.createElement('li');
+                let text = document.createTextNode(msg);
+                message.appendChild(text);
+        
+                let form = document.querySelector('#messages');
+        
+                form.appendChild(message)
+            })
         }
     }
 
