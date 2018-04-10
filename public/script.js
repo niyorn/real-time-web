@@ -26,7 +26,6 @@
                 message.appendChild(text);
         
                 let form = document.querySelector('#messages');
-        
                 form.appendChild(message)
             })
         }
