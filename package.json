@@ -1,0 +1,30 @@
+{
+  "name": "real-time-web",
+  "version": "1.0.0",
+  "description": "With this application you're able to communicate realtime with annother person on the interent",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niyorn/real-time-web.git"
+  },
+  "keywords": [
+    "real",
+    "time"
+  ],
+  "author": "Chanakarn Niyornram",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niyorn/real-time-web/issues"
+  },
+  "homepage": "https://github.com/niyorn/real-time-web#readme",
+  "dependencies": {
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "nodemon": "^1.17.3",
+    "save": "^2.3.2"
+  }
+}
