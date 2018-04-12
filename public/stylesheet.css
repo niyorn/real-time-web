@@ -43,3 +43,30 @@ form button {
 #messages li:nth-child(odd) {
     background: #eee;
 }
+
+.pin{
+    margin-left: 1rem;
+    padding: 1rem;
+    border: none;
+    background-color: coral;
+}
+
+.pinned-messages{
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    max-width: 20em;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 1rem;
+}
+
+.pinned-messages .pinned{
+    width: 100%
+}
+
+.pinned-messages .pinned li:nth-of-type(odd){
+    background-color: rgb(224, 223, 223);
+}
