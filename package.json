@@ -1,7 +1,7 @@
 {
   "name": "real-time-web",
   "version": "1.0.0",
-  "description": "With this application you're able to communicate realtime with annother person on the interent",
+  "description": "With this application you're able to communicate realtime with annother person on the internet",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
