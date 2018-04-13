@@ -1,13 +1,17 @@
 # A Chat app
-This is a chat app where you can type and recieve and send messages.
+This is a chat app where you can receive realtime messages. These messages can also be pinned to view it at a later time.
 
 
 ![Application running](docImages/Header-image.png)
 
 ## Getting started
 
-* `npm install`
-* `npm start` or if you have nodemon locally `nodemon`
+installl dependencies
+
+```npm install```
+
+Start application. Start port is 4000
+```npm start``` 
 
 
 ## What's Used
