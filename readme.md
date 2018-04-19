@@ -9,6 +9,33 @@ The first person that gains a 100% ROI win the game.
 
 *The application use real value from the crypto market%*
 
+## API
+This application use the API from [CryptoCompare](https://www.cryptocompare.com/api/#-api-web-socket-). 
+
+Get realtime data from CryptoCompare by connecting to:
+```
+wss://streamer.cryptocompare.com
+```
+
+### Subscribe
+Subscribe to market data by emitting 'SubAdd' including a list of items you want to get updates on.
+
+Subscription items have the format of '{SubscriptionId}~{ExchangeName}~{FromSymbol}~{ToSymbol}'
+
+Example:
+```
+socket.emit('SubAdd', { subs: ['0~Poloniex~BTC~USD'] } ); 
+```
+
+You can subscribe to the following:
+
+|SubscriptionId |	Name 	| Description
+|-|-|-|
+|0 	| TRADE 	|Trade level data on a currency pair from a specific exchange.
+|2 	| CURRENT |	Latest quote update of a currency pair from a specific exchange.
+|5 	| CURRENTAGG 	| Quote update aggregated over the last 24 hours of a currency pair | from a specific exchange.
+
+
 ## What's Used
 
 * `ejs: 2.5.8,`
