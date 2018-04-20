@@ -55,9 +55,14 @@ You can subscribe to the following:
 
 ### Unsubscribe
 
-Unsubscribe by sending 'SubRemove' message with a list of items. 
+Unsubscribe by sending 'SubRemove' message with a list of items.
 
-
+## Todo
+- [ ] Connect to CryptoCompare
+- [ ] Subscribe to Current trade
+- [ ] Create database
+- [ ] Create buy/sell order function
+- [ ] Track transaction
 
 ## Features
 
