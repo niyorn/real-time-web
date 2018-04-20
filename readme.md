@@ -9,6 +9,23 @@ The first person that gains a 100% ROI win the game.
 
 *The application use real value from the crypto market%*
 
+## Getting started
+
+Get all dependencies 
+```
+npm install
+```
+
+Start application
+```
+npm start
+```
+
+Standard port is 4000
+```
+localhost:4000
+```
+
 ## API
 This application use the API from [CryptoCompare](https://www.cryptocompare.com/api/#-api-web-socket-). 
 
