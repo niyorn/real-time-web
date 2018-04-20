@@ -64,5 +64,4 @@ Unsubscribe by sending 'SubRemove' message with a list of items.
 * `ejs: 2.5.8,`
 * `express: 4.16.3,`
 * `nodemon: 1.17.3,`
-* `save: 2.3.2`
 * `socket.io: 2.1.0`
