@@ -30,11 +30,15 @@ socket.emit('SubAdd', { subs: ['0~Poloniex~BTC~USD'] } );
 You can subscribe to the following:
 
 |SubscriptionId |	Name 	| Description
-|-|-|-|
+|---|---|---|
 |0 	| TRADE 	|Trade level data on a currency pair from a specific exchange.
 |2 	| CURRENT |	Latest quote update of a currency pair from a specific exchange.
 |5 	| CURRENTAGG 	| Quote update aggregated over the last 24 hours of a currency pair | from a specific exchange.
 
+
+### Unsubscribe
+
+Unsubscribe by sending 'SubRemove' message with a list of items. 
 
 ## What's Used
 
