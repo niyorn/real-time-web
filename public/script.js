@@ -2,31 +2,29 @@
 
     const app = {
         init: function () {
-            chat.send();
+            crypto.init ();
+            crypto.getData();
         }
     }
 
 
-    const chat = {
-        send: function () {
-            let socket = io();
-            let form = document.querySelector('form');
-
-            form.addEventListener('submit', function (event) {
-                event.preventDefault() //stop normal submit behavior
-                let input = document.querySelector('input');
-
-                socket.emit('message', input.value)//send message
-                input.value = ''; //make input empty again
+    const crypto = {
+        socket: socket = io (),
+        init: function () {
+            this.socket.on('init', function(data){
+                document.querySelector('h1').innerHTML = data
             })
+        },
+        getData: function () {
+            this.socket.on('data', function(data){
 
-            socket.on('message', function(msg){
-                let message = document.createElement('li');
-                let text = document.createTextNode(msg);
-                message.appendChild(text);
-        
-                let form = document.querySelector('#messages');
-                form.appendChild(message)
+                var incomingTrade = CCC.TRADE.unpack(data);
+
+                console.table(incomingTrade)
+                let item = document.createElement('div')
+                item.appendChild(document.createTextNode(incomingTrade.P))
+                
+                document.body.appendChild(item);
             })
         }
     }

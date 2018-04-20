@@ -1,12 +1,14 @@
-const express = require('express')
-    app = express ();
+const express = require('express');
+const app = express ();
 const router = require('./routes/routes');
 const port = 4000;
-const http = require('http'),
-    server = http.createServer(app);
+const http = require('http')
+const server = http.createServer(app);
+const connectURL = 'wss://streamer.cryptocompare.com';    
 const io = require('socket.io')(server)
-
-
+const cryptoSocket = require('socket.io-client')(connectURL);
+const subscription = ['0~Bitfinex~ETH~USD']
+let initData = {}
 
 app
     .use(express.static('views'))
@@ -15,18 +17,20 @@ app
 
 app.use('/', router)
 
+cryptoSocket.emit('SubAdd', { subs: subscription });
+cryptoSocket.on("m", function(data) {
+    initData = data;
+    io.emit('data', data)
+});
+
 //make a connection with sockket
 io.on('connection', function(socket){
-    console.log('a user connected');
+    console.log('an user have connected')
+    io.emit('init', initData)
 
-    //handle message event
-    socket.on('message', function(message){
-        io.emit('message', message)
-    });
-
-    socket.on('disconnect', function () {
-        console.log('user disconnected')
-    })
+    // socket.on('disconnect', function () {
+    //     console.log('user disconnected')
+    // })
 });
 
 
