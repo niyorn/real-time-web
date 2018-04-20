@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-# A Chat app
-
-https://real-time-web-invjxhaaob.now.sh 
-
-
-This is a chat app where you can receive realtime messages. These messages can also be pinned to view it at a later time.
-=======
 # Crypto trading
 This application is a simulation for crypto trading with the goal: Who can get a 100% Return on Investment (ROI) in the shortest amount of time.
->>>>>>> 553bf007b3ca9393993dc5744b08215a2d1c8d70
 
 An user can create a group by inviting people with a link. All of the member of the group will get fake money, where as the ammount is preditermined by the admin of the group. Next, the member are able to buy/sell their crypto assets and all of the transaction will tracked in realtime. All of the transaction are enabled to be viewd by all of the member of the group. This is done so that a member can create a startegy or manipulate other to gains leverage. 
 
@@ -20,14 +11,6 @@ The first person that gains a 100% ROI win the game.
 
 ## Getting started
 
-<<<<<<< HEAD
-installl dependencies
-
-```npm install```
-
-Start application. Start port is 4000
-```npm start``` 
-=======
 Get all dependencies 
 ```
 npm install
@@ -73,7 +56,6 @@ You can subscribe to the following:
 ### Unsubscribe
 
 Unsubscribe by sending 'SubRemove' message with a list of items.
->>>>>>> 553bf007b3ca9393993dc5744b08215a2d1c8d70
 
 ## Todo
 - [ ] Connect to CryptoCompare
