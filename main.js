@@ -27,7 +27,7 @@ io.on('connection', function (socket) {
     //handle pin messages event
 
     socket.on('pin', function (message) {
-        io.emit('pin', messages)
+        io.emit('pin', message)
     })
 
     socket.on('disconnect', function () {
