@@ -40,7 +40,9 @@ You can subscribe to the following:
 
 Unsubscribe by sending 'SubRemove' message with a list of items. 
 
-## What's Used
+
+
+## Features
 
 * `ejs: 2.5.8,`
 * `express: 4.16.3,`
