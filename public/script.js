@@ -13,28 +13,6 @@
             let newPrice = 0;
             this.socket.on('data', function(data){
                 crypto.transformData(data);
-
-                
-
-                // var incomingTrade = CCC.TRADE.unpack(data);
-                // let item = document.querySelector('#price');
-                // item.classList = "";
-                // let oldPrice = incomingTrade.P;
-        
-                // if(oldPrice > newPrice){
-                //     price.classList.add('gain');
-                //     newPrice = oldPrice;
-                // }
-                // else if(oldPrice < newPrice){
-                //     price.classList.add('lose');
-                //     newPrice = oldPrice;
-                // }
-
-                // item.innerHTML = newPrice;
-
-                // document.querySelector('iformation-container').appendChild(item)
-                
-                // document.body.appendChild(item);
             })
         },
         transformData : function (data) {
