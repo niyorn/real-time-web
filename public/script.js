@@ -90,6 +90,15 @@
         }
     }
 
+    const helper = {
+        randomNumber : function () {
+            let array = new Uint32Array(10);
+            let randomNumber = window.crypto.getRandomValues(array);
+
+            return randomNumber;
+        }
+    }
+
     app.init();
 
 })()
