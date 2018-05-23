@@ -1,9 +1,32 @@
 <%- include partials/head.ejs %>
+    <main class="container">
+        <section class="transaction-container">
+            <span class="title-price"></span>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exchange</th>
+                        <th>Type</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody class="trade">
+                </tbody>
+            </table>
+        </section>
 
-<ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" />
-      <button>Send</button>
-</form>
+        <section class="coin-selection">
+            <p>Select your coin</p>
+            <ul>
+                <li><button class="active" type="button" value="ETH">ETH</button></li>
+                <li><button type="button" value="ICX">ICX</button></li>
+                <li><button type="button" value="REQ">REQ</button></li>
+            </ul>
+        </section>
+    </main>
 
-<%- include partials/tail.ejs %>
+    <%- include partials/tail.ejs %>

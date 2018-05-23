@@ -1,33 +1,109 @@
-const express = require('express')
-    app = express ();
+const express = require('express');
+const app = express ();
 const router = require('./routes/routes');
 const port = 4000;
-const http = require('http'),
-    server = http.createServer(app);
-const io = require('socket.io')(server)
+const http = require('http')
+const server = http.createServer(app);
+const io = require('socket.io').listen(server);
+const connectURL = 'wss://streamer.cryptocompare.com';    
+const cryptoSocket = require('socket.io-client')(connectURL);
+const session = require('express-session');
 
+//database
+const MongoClient = require('mongodb').MongoClient;
+const mongoUrl = "mongodb://localhost:27017/mydb";
+const dataBaseName = "hva"
 
+// function insertData (data){
+//     MongoClient.connect(mongoUrl, function(err, db) {
+//         if (err) throw err;
+//         let dbase = db.db(dataBaseName);
+//         dbase.collection('cryptocurrency').insert({
+//             text: data
+//         })
+//         .then(result => {
+//             // console.log(result.ops)
+//             db.close();
+//         })
+//     });
+// }
+
+// function insertUser (id) {
+//     MongoClient.connect(mongoUrl, function(err, db) {
+//         if (err) throw err;
+        
+//         let dbase = db.db(dataBaseName);
+//         dbase.collection('user').insert({
+//             id : id
+//         })
+//         .then(result => {
+//             // console.log(result.ops)
+//             db.close();
+//         })
+//     });
+// }
+
+const subscriptionEth = '0~Binance~ETH~USDT';
+const subscriptionIcx = '0~Binance~ICX~ETH';
+const subscriptionReq = '0~Binance~REQ~ETH';
+const subscriptionAll = [subscriptionEth, subscriptionIcx, subscriptionReq];
 
 app
     .use(express.static('views'))
     .use(express.static('public'))
-    .set('view engine', 'ejs')
+    .use(session({
+        secret: "YourSuperSecretStringWithStrangeCharacters#@$!",
+        resave: false,
+        saveUninitialized: true
+      }))
+    .set('view engine', 'ejs');
 
-app.use('/', router)
+app.use('/', router);
 
-//make a connection with sockket
-io.on('connection', function(socket){
-    console.log('a user connected');
+//Subscribe to the CryptoCompare stream 
+cryptoSocket.emit('SubAdd', { subs: subscriptionAll });
 
-    //handle message event
-    socket.on('message', function(message){
-        io.emit('message', message)
+
+
+let connectedUsers = {}
+io.on('connection', function (socket){
+    console.log('a user have connected')
+    socket.on('joinRoom', (roomName) => {
+        // Same the name as  socket property
+        socket.room = roomName;
+        socket.join(roomName);
+
+        console.log(`A user have joined room: ${socket.room}`)
     });
 
-    socket.on('disconnect', function () {
-        console.log('user disconnected')
+    socket.on('switchRoom', (roomName) => {
+        socket.leave(socket.room);
+        socket.join(roomName)
+        socket.room = roomName;
+
+        console.log(`A user have switch to room: ${socket.room}`)
     })
-});
+
+    cryptoSocket.on("m", function(data) {
+        //Find the cryptocurrency coin from the data
+        let req = data.match(['REQ']);
+        let icx = data.match(['ICX']);
+        //because every coin is strading against ETH we need to find the ethereum 
+        //trading from USDT
+        let eth = data.match(['USDT']);
+    
+        if(req){
+            io.in('REQ').emit('data', data);
+        }
+        else if (icx) {
+            io.in('ICX').emit('data', data);
+        }
+        else if (eth) {
+            io.in('ETH').emit('data', data);
+        }
+    });
+
+})
 
 
 server.listen(port, function () {
