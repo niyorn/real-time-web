@@ -1,6 +1,9 @@
 # Crypto Monitor
 The Crypto Monitor is an application where the user is able to track realtime trading that takes place on Binance Exchange.
 
+Link: https://7de58c4e.ngrok.io
+
+![Photo of the Crypto Monitor application](docImages/main.PNG)
 
 ## Getting started
 
@@ -50,10 +53,29 @@ You can subscribe to the following:
 
 Unsubscribe by sending 'SubRemove' message with a list of items.
 
+## Flow diagram
+
+### Server 
+![Flow diagram of the server](docImages/server_diagram.jpg)
+
+### Client
+
+#### Actor diagram
+![Client actor diagram](docImages/client-function.jpg)
+
+#### Flow
+![Client actor diagram](docImages/clientFlow.jpg)
+
 ## Todo
 - [x] Connect to CryptoCompare
 - [x] Subscribe to Current trade
 - [x] Track transaction
+- [ ] Save user to database
+- [ ] Tunnel effect status
+
+## Wishlist 
+- [ ] Sent status of server to client
+- [ ] Sent status of Client to server 
 
 ## Features
 

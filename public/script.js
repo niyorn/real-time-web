@@ -3,24 +3,9 @@
     const app = {
         init: function () {
             helper.socket;
-            this.createId();
-            crypto.socket;
-            crypto.getData();
-            server.sendId();
-
             event.join();
+            crypto.getData();
             event.switchRoom();
-        },
-        createId: function () {
-            //Create id if not exist
-            if (localStorage.getItem("cryptoWallet") === null) {
-                let id = helper.randomNumber();
-                localStorage.setItem('cryptoWallet', id)
-            }
-
-            let id = localStorage.getItem('cryptoWallet');
-
-            helper.socket.emit('id', id)
         }
     }
 
@@ -113,28 +98,6 @@
         }
     }
 
-    const server = {
-        sendId: function () {
-            let id = localStorage.getItem('cryptoWallet');
-
-            console.log(id)
-        }
-    }
-
-    const helper = {
-        socket: socket = io(),
-        randomNumber: function () {
-            let d = new Date();
-            let date = d.getTime();
-
-            let array = new Uint32Array(1);
-            window.crypto.getRandomValues(array);
-
-            let randomNumber = array[0];
-            return date + randomNumber;
-        }
-    }
-
     const event = {
         join: function () {
             let button = document.querySelector('.coin-selection button.active');
@@ -161,6 +124,21 @@
         
                 })
             })
+        }
+    }
+
+
+    const helper = {
+        socket: socket = io(),
+        randomNumber: function () {
+            let d = new Date();
+            let date = d.getTime();
+
+            let array = new Uint32Array(1);
+            window.crypto.getRandomValues(array);
+
+            let randomNumber = array[0];
+            return date + randomNumber;
         }
     }
 
