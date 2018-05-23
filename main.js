@@ -10,39 +10,6 @@ const cryptoSocket = require('socket.io-client')(connectURL);
 const session = require('express-session');
 
 //database
-const MongoClient = require('mongodb').MongoClient;
-const mongoUrl = "mongodb://localhost:27017/mydb";
-const dataBaseName = "hva"
-
-// function insertData (data){
-//     MongoClient.connect(mongoUrl, function(err, db) {
-//         if (err) throw err;
-//         let dbase = db.db(dataBaseName);
-//         dbase.collection('cryptocurrency').insert({
-//             text: data
-//         })
-//         .then(result => {
-//             // console.log(result.ops)
-//             db.close();
-//         })
-//     });
-// }
-
-// function insertUser (id) {
-//     MongoClient.connect(mongoUrl, function(err, db) {
-//         if (err) throw err;
-        
-//         let dbase = db.db(dataBaseName);
-//         dbase.collection('user').insert({
-//             id : id
-//         })
-//         .then(result => {
-//             // console.log(result.ops)
-//             db.close();
-//         })
-//     });
-// }
-
 const subscriptionEth = '0~Binance~ETH~USDT';
 const subscriptionIcx = '0~Binance~ICX~ETH';
 const subscriptionReq = '0~Binance~REQ~ETH';
@@ -62,8 +29,6 @@ app.use('/', router);
 
 //Subscribe to the CryptoCompare stream 
 cryptoSocket.emit('SubAdd', { subs: subscriptionAll });
-
-
 
 let connectedUsers = {}
 io.on('connection', function (socket){
@@ -104,7 +69,6 @@ io.on('connection', function (socket){
     });
 
 })
-
 
 server.listen(port, function () {
     console.log('open at localhost:' + port)
