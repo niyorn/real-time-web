@@ -49,27 +49,28 @@ io.on('connection', function (socket){
         console.log(`A user have switch to room: ${socket.room}`)
     })
 
-    cryptoSocket.on("m", function(data) {
-        //Find the cryptocurrency coin from the data
-        let req = data.match(['REQ']);
-        let icx = data.match(['ICX']);
-        //because every coin is strading against ETH we need to find the ethereum 
-        //trading from USDT
-        let eth = data.match(['USDT']);
-    
-        if(req){
-            io.in('REQ').emit('data', data);
-        }
-        else if (icx) {
-            io.in('ICX').emit('data', data);
-        }
-        else if (eth) {
-            io.in('ETH').emit('data', data);
-        }
-    });
-
 })
 
-server.listen(port, function () {
+cryptoSocket.on("m", function(data) {
+    //Find the cryptocurrency coin from the data
+    console.log(data)
+    let req = data.match(['REQ']);
+    let icx = data.match(['ICX']);
+    //because every coin is strading against ETH we need to find the ethereum 
+    //trading from USDT
+    let eth = data.match(['USDT']);
+
+    if(req){
+        io.in('REQ').emit('data', data);
+    }
+    else if (icx) {
+        io.in('ICX').emit('data', data);
+    }
+    else if (eth) {
+        io.in('ETH').emit('data', data);
+    }
+});
+
+server.listen(process.env.PORT || port, function () {
     console.log('open at localhost:' + port)
 })
