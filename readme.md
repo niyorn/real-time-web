@@ -1,7 +1,7 @@
 # Crypto Monitor
 The Crypto Monitor is an application where the user is able to track realtime trading that takes place on Binance Exchange.
 
-Link: https://7de58c4e.ngrok.io
+Link to demo: https://gentle-temple-43808.herokuapp.com/
 
 ![Photo of the Crypto Monitor application](docImages/main.PNG)
 
